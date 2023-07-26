@@ -1,0 +1,6 @@
+.element__like-active{
+    cursor: pointer;
+    opacity: 1;
+    background-image: url("../../../images/like_black.svg");
+    left:100px;
+}

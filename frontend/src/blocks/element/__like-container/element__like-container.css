@@ -1,0 +1,17 @@
+.element__like-container{
+    width: 22px;
+    height: 19px;
+    border: 0;
+    padding: 0;
+    margin: 22px 20px 3px auto;
+    background-color: #fff;
+    background-image: url("../../../images/like_transp.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-size: 22px 19px;
+}
+.element__like-container:hover{
+    cursor: pointer;
+    opacity: 0.5;
+}
+

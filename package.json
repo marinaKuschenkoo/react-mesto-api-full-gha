@@ -1,0 +1,12 @@
+{
+  "name": "react-mesto-api-full-gha",
+  "version": "1.0.0",
+  "description": "[![Статус тестов](../../actions/workflows/tests.yml/badge.svg)](../../actions/workflows/tests.yml)",
+  "main": "index.js",
+  "scripts": {
+    "start": "node backend/app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
