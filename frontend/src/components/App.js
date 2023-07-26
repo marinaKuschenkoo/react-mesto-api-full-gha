@@ -71,11 +71,11 @@ function App() {
     auth
       .login(email, password)
       .then((res) => {
-        if (res.token) {
+        if (res) {
           setIsLoggedIn(true);
           navigate("/", { replace: true });
-          setUserEmail(res.user.email);
-          localStorage.setItem("jwt", res.token);
+          setUserEmail(res.user);
+          localStorage.setItem("jwt", res);
         }
       })
       .catch((err) => {
@@ -96,7 +96,6 @@ function App() {
             setIsLoggedIn(true);
             setUserEmail(res.user.email);
             navigate('/');
-            console.log('token');
           }
         })
         .catch((err) => {
