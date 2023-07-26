@@ -9,7 +9,7 @@
 
 ## Ссылки на проект
 
-IP-адрес 51.250.79.192
+IP 51.250.79.192
 
 Frontend https://marinakuschenko.nomoreparties.sbs
 
