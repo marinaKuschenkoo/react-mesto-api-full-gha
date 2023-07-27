@@ -73,10 +73,10 @@ function App() {
       .then((res) => {
         //console.log(isLoggedIn)
         if (res) {
+          localStorage.setItem("jwt", res);
           setIsLoggedIn(true);
           navigate("/", { replace: true });
           setUserEmail(res.user.email);
-          localStorage.setItem("jwt", res);
         }
         //console.log(isLoggedIn)
       })
