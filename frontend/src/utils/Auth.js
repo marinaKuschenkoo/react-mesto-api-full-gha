@@ -45,7 +45,11 @@ class Auth {
   }
   
   const auth = new Auth({
-    baseUrl: "http://localhost:3000",
+    //baseUrl: "http://localhost:3000",
+    baseUrl: "api.marinakuschenko.nomoreparties.sbs",
+    headers: {
+      "Content-Type": "application/json",
+    },
   });
   
   export default auth;
