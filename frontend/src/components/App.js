@@ -90,6 +90,7 @@ function App() {
   //сверим токен и авторизацию
   function handleToken() {
     const jwt = localStorage.getItem('jwt');
+    
     if (jwt) {
       auth
         .checkToken(jwt)
