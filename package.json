@@ -4,7 +4,8 @@
   "description": "[![Статус тестов](../../actions/workflows/tests.yml/badge.svg)](../../actions/workflows/tests.yml)",
   "main": "index.js",
   "scripts": {
-    "start": "node backend/app.js"
+    "start": "npm run kill && nodemon app.js",
+    "kill": "kill -9 $(lsof -i :3000) &>/dev/null | exit 0"
   },
   "keywords": [],
   "author": "",
