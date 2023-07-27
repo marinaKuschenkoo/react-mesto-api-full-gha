@@ -9,8 +9,8 @@
 
 ## Ссылки на проект
 
-IP-адрес x.x.x.x
+IP 51.250.79.192
 
-Frontend https://...
+Frontend https://marinakuschenko.nomoreparties.sbs
 
-Backend https://...
+Backend https://api.marinakuschenko.nomoreparties.sbs
