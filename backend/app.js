@@ -1,6 +1,7 @@
 /* eslint-disable no-useless-escape */
 /* eslint-disable newline-per-chained-call */
 /* eslint-disable import/no-extraneous-dependencies */
+require('dotenv').config()
 const express = require('express');
 // eslint-disable-next-line import/no-extraneous-dependencies
 const mongoose = require('mongoose');
