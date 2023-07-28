@@ -76,7 +76,8 @@ function App() {
           localStorage.setItem("jwt", res.token);
           setIsLoggedIn(true);
           navigate("/", { replace: true });
-          setUserEmail(res.email);
+          setUserEmail(res.user.email);
+          
         }
         
       })
@@ -97,10 +98,12 @@ function App() {
         .then((res) => {
           if (res) {
             setIsLoggedIn(true);
-            setUserEmail();
-            console.log(res.email)
+            setUserEmail(res.user.email);
+            //console.log(isLoggedIn)
+            //console.log(res.user.email)
             navigate('/');
           }
+
         })
         .catch((err) => {
           console.log(err);
@@ -122,7 +125,7 @@ function App() {
     if (isLoggedIn) {
       Promise.all([api.getUserInfo(), api.getInitialCards()])
         .then(([userData, cardsData]) => {
-          setCurrentUser(userData);
+          setCurrentUser(userData.user);
           setCards(cardsData.cards);
         })
         .catch((err) => console.log(err));
