@@ -121,6 +121,7 @@ function App() {
     setSelectedCard(null);
   }
 
+  
   useEffect(() => {
     if (isLoggedIn) {
       Promise.all([api.getUserInfo(), api.getInitialCards()])
