@@ -17,11 +17,11 @@ const NotFoundError = require('./errors/NotFoundError');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 
 const app = express();
-app.use(cors);
+app.use(cors());
 app.use((req, res, next) => {
   res.header({"Access-Control-Allow-Origin": "*"});
   next();
-}) 
+})
 const { PORT = 3000 } = process.env;
 
 app.use(express.json());
