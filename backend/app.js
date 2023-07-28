@@ -5,7 +5,8 @@ require('dotenv').config()
 const express = require('express');
 // eslint-disable-next-line import/no-extraneous-dependencies
 const mongoose = require('mongoose');
-const cors = require('./middlewares/cors.js');
+//const cors = require('./middlewares/cors.js');
+const cors = require('cors');
 const { celebrate, Joi, errors } = require('celebrate');
 const ServerErrorHandler = require('./middlewares/ServerErrorHandler');
 const userRouter = require('./routes/users');
@@ -17,13 +18,9 @@ const NotFoundError = require('./errors/NotFoundError');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 
 const app = express();
-app.use(cors());
-app.use((req, res, next) => {
-  res.header({"Access-Control-Allow-Origin": "*"});
-  next();
-})
+//app.use(cors);
 const { PORT = 3000 } = process.env;
-
+app.use(cors({ origin: 'https://marinakuschenko.nomoreparties.sbs' }));
 app.use(express.json());
 
 mongoose.connect('mongodb://127.0.0.1:27017/mestodb', {
