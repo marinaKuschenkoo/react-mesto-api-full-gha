@@ -11,14 +11,15 @@ const InterdictionError = require('../errors/InterdictionError');
 const InternalServerError = require('../errors/InternalServerError');
 const AlreadyExistError = require('../errors/AlreadyExistError');
 const ValidationError = require('../errors/ValidationError');
-const { secret } = require('../constants');
+//const { secret } = require('../constants');
+const { JWT_SECRET } = process.env;
 
 module.exports.login = (req, res, next) => {
   const { email, password } = req.body;
 
   return User.findUserByCredentials(email, password)
     .then((user) => {
-      const token = jwt.sign({ _id: user._id }, secret, {
+      const token = jwt.sign({ _id: user._id }, JWT_SECRET, {
         expiresIn: '7d',
       });
       res.send({ message: 'Авторизация прошла успешно', token });

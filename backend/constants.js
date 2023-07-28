@@ -1,5 +1,5 @@
-const secret = 'helloWorldhelloWorldhelloWorldhelloWorld';
+/*const secret = 'helloWorldhelloWorldhelloWorldhelloWorld';
 
 module.exports = {
   secret,
-};
+};*/
