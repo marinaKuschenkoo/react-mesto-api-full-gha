@@ -3,8 +3,6 @@ const allowedCors = [
   'http://localhost:3000',
   'https://marinakuschenko.nomoreparties.sbs',
   'http://marinakuschenko.nomoreparties.sbs',
-  'https://api.marinakuschenko.nomoreparties.sbs',
-  'http://api.marinakuschenko.nomoreparties.sbs',
   'https://localhost:3000',
   'http://localhost:3001',
   'https://localhost:3001',
