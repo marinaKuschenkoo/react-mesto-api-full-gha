@@ -121,7 +121,7 @@ function App() {
     setSelectedCard(null);
   }
 
-  
+
   useEffect(() => {
     if (isLoggedIn) {
       Promise.all([api.getUserInfo(), api.getInitialCards()])
@@ -162,7 +162,7 @@ function App() {
   };
 
   const handleCardLike = (card) => {
-    const isLiked = card.likes.some((i) => i._id === currentUser._id);
+    const isLiked = card.likes.some((i) => i === currentUser._id);
     api
       .changeLikeStatus(card._id, !isLiked)
       .then((newCard) => {
