@@ -76,9 +76,9 @@ function App() {
           localStorage.setItem("jwt", res);
           setIsLoggedIn(true);
           navigate("/", { replace: true });
-          setUserEmail(res.user.email);
+          setUserEmail(res.email);
         }
-        //console.log(isLoggedIn)
+        
       })
       .catch((err) => {
         setIsInfoTooltipOpen(true);
@@ -97,7 +97,7 @@ function App() {
         .then((res) => {
           if (res) {
             setIsLoggedIn(true);
-            setUserEmail(res.user.email);
+            setUserEmail(res.email);
             navigate('/');
           }
         })
@@ -121,7 +121,7 @@ function App() {
     if (isLoggedIn) {
       Promise.all([api.getUserInfo(), api.getInitialCards()])
         .then(([userData, cardsData]) => {
-          setCurrentUser(userData.user);
+          setCurrentUser(userData);
           setCards(cardsData.cards);
         })
         .catch((err) => console.log(err));
