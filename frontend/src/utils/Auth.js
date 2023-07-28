@@ -38,6 +38,7 @@ class Auth {
         headers: {
           "Accept": "application/json",
           "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*",
           "Authorization": `Bearer ${token}`,
         },
       }).then(this._checkResponse);
