@@ -2,7 +2,7 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 const jwt = require('jsonwebtoken');
 const ValidationError = require('../errors/ValidationError');
-const { SECRET_KEY } = process.env;
+const { secret } = require('../constants');
 
 module.exports = (req, res, next) => {
   const { authorization } = req.headers;
@@ -12,11 +12,10 @@ module.exports = (req, res, next) => {
   const token = authorization.replace('Bearer ', '');
   let payload;
   try {
-    payload = jwt.verify(token, SECRET_KEY);
+    payload = jwt.verify(token, secret);
   } catch (error) {
     throw new ValidationError('Необходима авторизация');
   }
   req.user = payload;
   next();
 };
-

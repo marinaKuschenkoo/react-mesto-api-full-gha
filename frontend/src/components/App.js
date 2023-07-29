@@ -71,16 +71,14 @@ function App() {
     auth
       .login(email, password)
       .then((res) => {
-          console.log('qqqqqqqq')
+        
+        if (res.token) {
           localStorage.setItem("jwt", res.token);
-          console.log('wwwwwwwww')
           setIsLoggedIn(true);
-          console.log('eeeeee')
           navigate("/", { replace: true });
-          console.log('rrrrrrr')
           setUserEmail(res.user.email);
-          console.log('ttttttttt')
           
+        }
         
       })
       .catch((err) => {
@@ -93,6 +91,7 @@ function App() {
   //сверим токен и авторизацию
   function handleToken() {
     const jwt = localStorage.getItem('jwt');
+    
     if (jwt) {
       auth
         .checkToken(jwt)
@@ -100,6 +99,8 @@ function App() {
           if (res) {
             setIsLoggedIn(true);
             setUserEmail(res.user.email);
+            //console.log(isLoggedIn)
+            //console.log(res.user.email)
             navigate('/');
           }
 
