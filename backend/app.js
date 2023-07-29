@@ -1,10 +1,12 @@
 /* eslint-disable no-useless-escape */
 /* eslint-disable newline-per-chained-call */
 /* eslint-disable import/no-extraneous-dependencies */
+require('dotenv').config()
 const express = require('express');
 // eslint-disable-next-line import/no-extraneous-dependencies
 const mongoose = require('mongoose');
-const cors = require('./middlewares/cors');
+//const cors = require('./middlewares/cors.js');
+const cors = require('cors');
 const { celebrate, Joi, errors } = require('celebrate');
 const ServerErrorHandler = require('./middlewares/ServerErrorHandler');
 const userRouter = require('./routes/users');
@@ -16,8 +18,10 @@ const NotFoundError = require('./errors/NotFoundError');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 
 const app = express();
+//app.use(cors);
 const { PORT = 3000 } = process.env;
-app.use(cors);
+app.use(cors({ origin: 'https://marinakuschenko.nomoreparties.sbs' }));
+//app.use(cors({ origin: 'http://localhost:3001' }));
 app.use(express.json());
 
 mongoose.connect('mongodb://127.0.0.1:27017/mestodb', {
@@ -30,7 +34,7 @@ app.get('/crash-test', () => {
   setTimeout(() => {
     throw new Error('Сервер сейчас упадёт');
   }, 0);
-}); 
+});
 app.post(
   '/signup',
   celebrate({
