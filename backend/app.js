@@ -59,7 +59,6 @@ app.use('/', auth, userRouter);
 app.use('/', auth, cardRouter);
  app.use('*', auth, () => {
    next(new NotFoundError('Страницы не существует'));
-   return;
  });
 app.use(errorLogger); // подключаем логгер ошибок
 app.use(errors());
