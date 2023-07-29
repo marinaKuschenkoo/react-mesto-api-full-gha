@@ -16,7 +16,6 @@ class Auth {
         headers: {
           "Accept": "application/json",
           "Content-Type": "application/json",
-          "Access-Control-Allow-Origin": "*",
         },
         body: JSON.stringify({ email, password }),
       }).then(this._checkResponse);
@@ -28,7 +27,6 @@ class Auth {
         headers: {
           "Accept": "application/json",
           "Content-Type": "application/json",
-          "Access-Control-Allow-Origin": "*",
         },
         body: JSON.stringify({ email, password }),
       }).then(this._checkResponse);
@@ -40,7 +38,6 @@ class Auth {
         headers: {
           "Accept": "application/json",
           "Content-Type": "application/json",
-          "Access-Control-Allow-Origin": "*",
           "Authorization": `Bearer ${token}`,
         },
       }).then(this._checkResponse);
