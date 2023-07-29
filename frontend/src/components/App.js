@@ -71,11 +71,15 @@ function App() {
     auth
       .login(email, password)
       .then((res) => {
-        
+          console.log('qqqqqqqq')
           localStorage.setItem("jwt", res.token);
+          console.log('wwwwwwwww')
           setIsLoggedIn(true);
+          console.log('eeeeee')
           navigate("/", { replace: true });
+          console.log('rrrrrrr')
           setUserEmail(res.user.email);
+          console.log('ttttttttt')
           
         
       })
@@ -94,9 +98,13 @@ function App() {
       auth
         .checkToken(jwt)
         .then((res) => {
+          console.log('yyyyyyyy')
           if (res) {
+            console.log('uuuuuuuuuu')
             setIsLoggedIn(true);
+            console.log('iiiiiiiiii')
             setUserEmail(res.user.email);
+            console.log('oooooooo')
             navigate('/');
           }
 
