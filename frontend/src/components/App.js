@@ -99,8 +99,6 @@ function App() {
           if (res) {
             setIsLoggedIn(true);
             setUserEmail(res.user.email);
-            //console.log(isLoggedIn)
-            //console.log(res.user.email)
             navigate('/');
           }
 
