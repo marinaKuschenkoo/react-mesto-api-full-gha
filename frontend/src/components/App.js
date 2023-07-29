@@ -72,13 +72,11 @@ function App() {
       .login(email, password)
       .then((res) => {
         
-        if (res.token) {
           localStorage.setItem("jwt", res.token);
           setIsLoggedIn(true);
           navigate("/", { replace: true });
           setUserEmail(res.user.email);
           
-        }
         
       })
       .catch((err) => {
