@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 // eslint-disable-next-line import/no-unresolved
 const validator = require('validator');
 
-const ValidationError = require('../errors/ValidationError');
+const Unauthorized = require('../errors/Unauthorized');
 
 const userSchema = new mongoose.Schema({
   name: {
@@ -45,12 +45,14 @@ userSchema.statics.findUserByCredentials = function (email, password) {
   return this.findOne({ email }).select('+password')
     .then((user) => {
       if (!user) {
-        throw new ValidationError('Неправильные почта или пароль');
+        next(new Unauthorized('Неправильные почта или пароль'));
+        return;
       }
       return bcrypt.compare(password, user.password)
         .then((matched) => {
           if (!matched) {
-            throw new ValidationError('Неправильные почта или пароль');
+            next(new Unauthorized('Неправильные почта или пароль'));
+            return;
           }
           return user;
         });

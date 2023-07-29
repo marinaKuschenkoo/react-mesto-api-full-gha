@@ -14,22 +14,23 @@ module.exports.getCards = (req, res, next) => {
 module.exports.deleteCard = (req, res, next) => {
   Card.findById(req.params.cardId)
     .then((card) => {
-      if (card && !(card.owner.toString() === req.user._id)) {
-        throw new InterdictionError('Невозможно удалить карту с другим _id пользователя');
-      } else if (!card) {
+      if (!card) {
         throw new NotFoundError('Карта с данным _id не найдена');
+      } else if (card && !(card.owner.toString() === req.user._id)) {
+        throw new InterdictionError('Невозможно удалить карту с другим _id пользователя');
       }
+
       Card.deleteOne(card)
         .then(() => res.send(card))
-        .catch((err) => {
-          if (err.name === 'CastError') {
-            next(new BadRequestError('Данные введены некорректно'));
-          } else {
-            next(err);
-          }
-        });
+        .catch(next);
     })
-    .catch(next);
+    .catch((error) => {
+      if (error.name === 'CastError') {
+        next(new BadRequestError('Переданы некорректные данные при удалении карточки'));
+      } else {
+        next(error);
+      }
+    });
 };
 
 module.exports.createCard = (req, res, next) => {

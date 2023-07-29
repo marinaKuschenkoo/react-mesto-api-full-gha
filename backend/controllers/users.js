@@ -7,11 +7,7 @@ const bcrypt = require('bcryptjs');
 const User = require('../models/user');
 const NotFoundError = require('../errors/NotFoundError');
 const BadRequestError = require('../errors/BadRequestError');
-const InterdictionError = require('../errors/InterdictionError');
-const InternalServerError = require('../errors/InternalServerError');
 const AlreadyExistError = require('../errors/AlreadyExistError');
-const ValidationError = require('../errors/ValidationError');
-const { secret } = require('../constants');
 const { JWT_SECRET, NODE_ENV } = process.env;
 
 module.exports.login = (req, res, next) => {
