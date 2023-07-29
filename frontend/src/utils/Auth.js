@@ -45,8 +45,8 @@ class Auth {
   }
   
   const auth = new Auth({
-    baseUrl: "http://localhost:3000",
-    //baseUrl: "https://api.marinakuschenko.nomoreparties.sbs",
+   // baseUrl: "http://localhost:3000",
+    baseUrl: "https://api.marinakuschenko.nomoreparties.sbs",
     headers: {
       "Content-Type": "application/json",
     },
