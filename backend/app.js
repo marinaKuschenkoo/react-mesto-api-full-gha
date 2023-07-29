@@ -1,9 +1,6 @@
-/* eslint-disable no-useless-escape */
-/* eslint-disable newline-per-chained-call */
-/* eslint-disable import/no-extraneous-dependencies */
 require('dotenv').config();
 const express = require('express');
-// eslint-disable-next-line import/no-extraneous-dependencies
+
 const mongoose = require('mongoose');
 const cors = require('./middlewares/cors');
 const { celebrate, Joi, errors } = require('celebrate');
@@ -57,13 +54,13 @@ app.post(
 );
 app.use('/', auth, userRouter);
 app.use('/', auth, cardRouter);
- app.use('*', auth, () => {
+ app.use('*', auth, (req, res, next) => {
    next(new NotFoundError('Страницы не существует'));
+   return;
  });
 app.use(errorLogger); // подключаем логгер ошибок
 app.use(errors());
 app.use(ServerErrorHandler);
 app.listen(PORT, () => {
-  // eslint-disable-next-line no-console
   console.log(`Сервер запущен ${PORT}`);
 });

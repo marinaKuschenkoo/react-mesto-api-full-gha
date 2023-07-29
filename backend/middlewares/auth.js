@@ -1,5 +1,3 @@
-/* eslint-disable consistent-return */
-// eslint-disable-next-line import/no-extraneous-dependencies
 const jwt = require('jsonwebtoken');
 const Unauthorized = require('../errors/Unauthorized');
 const { JWT_SECRET, NODE_ENV } = process.env;

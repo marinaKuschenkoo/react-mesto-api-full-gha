@@ -1,9 +1,6 @@
-/* eslint-disable import/no-extraneous-dependencies */
-// eslint-disable-next-line import/no-extraneous-dependencies, import/no-unresolved
 const bcrypt = require('bcryptjs');
 const mongoose = require('mongoose');
 
-// eslint-disable-next-line import/no-unresolved
 const validator = require('validator');
 
 const Unauthorized = require('../errors/Unauthorized');
@@ -45,14 +42,12 @@ userSchema.statics.findUserByCredentials = function (email, password) {
   return this.findOne({ email }).select('+password')
     .then((user) => {
       if (!user) {
-        next(new Unauthorized('Неправильные почта или пароль'));
-        return;
+        return Promise.reject(new Unauthorized('Неправильные почта или пароль'));
       }
       return bcrypt.compare(password, user.password)
         .then((matched) => {
           if (!matched) {
-            next(new Unauthorized('Неправильные почта или пароль'));
-            return;
+            return Promise.reject(new Unauthorized('Неправильные почта или пароль'));
           }
           return user;
         });
