@@ -72,8 +72,8 @@ function App() {
       .login(email, password)
       .then((res) => {
         
-        if (res.token) {
-          localStorage.setItem("jwt", res.token);
+        if (res) {
+          localStorage.setItem("jwt", res);
           setIsLoggedIn(true);
           navigate("/", { replace: true });
           setUserEmail(res.user.email);
