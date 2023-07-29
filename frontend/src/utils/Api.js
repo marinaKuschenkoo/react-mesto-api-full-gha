@@ -74,8 +74,8 @@ class Api {
 }
 
 const api = new Api({
-  //baseUrl: "http://localhost:3000",
-  baseUrl: 'https://api.marinakuschenko.nomoreparties.sbs',
+  baseUrl: "http://localhost:3000",
+  //baseUrl: 'https://api.marinakuschenko.nomoreparties.sbs',
   headers: {
     authorization: `Bearer ${localStorage.getItem('jwt')}`,
     "Content-Type": "application/json",
