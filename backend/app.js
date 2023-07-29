@@ -24,6 +24,7 @@ app.use(cors({ origin: 'https://marinakuschenko.nomoreparties.sbs' }));
 //app.use(cors({ origin: 'http://localhost:3001' }));
 app.use(express.json());
 
+
 mongoose.connect('mongodb://127.0.0.1:27017/mestodb', {
   useNewUrlParser: true,
 });
