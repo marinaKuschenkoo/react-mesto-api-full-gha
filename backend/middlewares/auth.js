@@ -3,6 +3,7 @@
 const jwt = require('jsonwebtoken');
 const ValidationError = require('../errors/ValidationError');
 const { SECRET_KEY } = process.env;
+
 module.exports = (req, res, next) => {
   const { authorization } = req.headers;
   if (!authorization || !authorization.startsWith('Bearer ')) {
